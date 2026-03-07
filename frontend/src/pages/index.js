@@ -1,0 +1,10 @@
+export { default as LoginPage } from './LoginPage';
+export { default as DashboardPage } from './DashboardPage';
+export { default as PropertiesPage } from './PropertiesPage';
+export { default as ResidentsPage } from './ResidentsPage';
+export { default as PaymentsPage } from './PaymentsPage';
+export { default as MaintenancePage } from './MaintenancePage';
+export { default as StaffPage } from './StaffPage';
+export { default as ReportsPage } from './ReportsPage';
+export { default as NoticesPage } from './NoticesPage';
+export { default as SettingsPage } from './SettingsPage';
