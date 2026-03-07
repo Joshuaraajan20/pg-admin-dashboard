@@ -1,0 +1,174 @@
+{
+  "design_system": {
+    "identity": {
+      "name": "PG Manager Pro",
+      "archetype": "The Soft Utility",
+      "vibe": "Clean, Organized, Trustworthy, Efficient",
+      "principles": [
+        "Clarity over Decoration: Data must be readable at a glance.",
+        "Soft Precision: Sharp data, soft containers.",
+        "Contextual Density: High density for tables, low density for summaries.",
+        "Feedback is King: Every action has an immediate visual response."
+      ]
+    },
+    "typography": {
+      "font_family": {
+        "headings": "Manrope, sans-serif",
+        "body": "Inter, sans-serif",
+        "mono": "JetBrains Mono, monospace"
+      },
+      "scale": {
+        "h1": "text-3xl font-bold tracking-tight",
+        "h2": "text-2xl font-semibold tracking-tight",
+        "h3": "text-xl font-semibold",
+        "body_lg": "text-lg leading-relaxed",
+        "body_base": "text-base leading-normal",
+        "body_sm": "text-sm leading-normal text-muted-foreground",
+        "caption": "text-xs font-medium text-muted-foreground uppercase tracking-wider"
+      },
+      "imports": [
+        "@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');"
+      ]
+    },
+    "colors": {
+      "palette": {
+        "primary": {
+          "DEFAULT": "#2563EB",
+          "foreground": "#FFFFFF",
+          "hover": "#1D4ED8",
+          "active": "#1E40AF"
+        },
+        "background": {
+          "DEFAULT": "#F8FAFC",
+          "paper": "#FFFFFF",
+          "subtle": "#F1F5F9"
+        },
+        "foreground": {
+          "DEFAULT": "#0F172A",
+          "muted": "#64748B",
+          "subtle": "#94A3B8"
+        },
+        "border": {
+          "DEFAULT": "#E2E8F0",
+          "subtle": "#F1F5F9",
+          "strong": "#CBD5E1"
+        },
+        "status": {
+          "success": {
+            "bg": "#ECFDF5",
+            "text": "#059669",
+            "border": "#A7F3D0"
+          },
+          "warning": {
+            "bg": "#FFFBEB",
+            "text": "#D97706",
+            "border": "#FDE68A"
+          },
+          "error": {
+            "bg": "#FFF1F2",
+            "text": "#E11D48",
+            "border": "#FECDD3"
+          },
+          "info": {
+            "bg": "#EFF6FF",
+            "text": "#2563EB",
+            "border": "#BFDBFE"
+          }
+        }
+      },
+      "gradients": {
+        "primary_subtle": "linear-gradient(180deg, rgba(37, 99, 235, 0.05) 0%, rgba(37, 99, 235, 0) 100%)"
+      }
+    },
+    "layout": {
+      "spacing": {
+        "container_padding": "p-6 md:p-8 lg:p-10",
+        "section_gap": "gap-8",
+        "component_gap": "gap-4"
+      },
+      "grid": {
+        "dashboard": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6",
+        "bento_main": "col-span-1 md:col-span-2 lg:col-span-3 row-span-2",
+        "bento_side": "col-span-1 row-span-1"
+      },
+      "containers": {
+        "card": "bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-200",
+        "sidebar": "w-64 h-screen fixed left-0 top-0 bg-white border-r border-slate-200 z-50 hidden md:flex flex-col",
+        "main_content": "md:pl-64 min-h-screen bg-slate-50 transition-all duration-300"
+      }
+    },
+    "components": {
+      "buttons": {
+        "primary": "bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 rounded-lg font-medium transition-all active:scale-95 shadow-sm",
+        "secondary": "bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 h-10 px-4 py-2 rounded-lg font-medium transition-all active:scale-95",
+        "ghost": "hover:bg-slate-100 text-slate-600 hover:text-slate-900 h-10 px-4 py-2 rounded-lg font-medium transition-colors",
+        "destructive": "bg-red-50 text-red-600 hover:bg-red-100 border border-red-100 h-10 px-4 py-2 rounded-lg font-medium transition-colors"
+      },
+      "inputs": {
+        "default": "flex h-10 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+      },
+      "cards": {
+        "stat": "p-6 flex flex-col gap-2",
+        "chart": "p-6 flex flex-col gap-4 h-full"
+      },
+      "badges": {
+        "base": "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+        "success": "border-transparent bg-emerald-50 text-emerald-700 hover:bg-emerald-100",
+        "warning": "border-transparent bg-amber-50 text-amber-700 hover:bg-amber-100",
+        "destructive": "border-transparent bg-rose-50 text-rose-700 hover:bg-rose-100",
+        "outline": "text-foreground"
+      }
+    },
+    "assets": {
+      "icons": {
+        "library": "lucide-react",
+        "style": "stroke-width={1.5} className='w-5 h-5'"
+      },
+      "images": {
+        "property_thumbnails": [
+          "https://images.unsplash.com/photo-1559329146-807aff9ff1fb?crop=entropy&cs=srgb&fm=jpg&q=85",
+          "https://images.unsplash.com/photo-1762397794646-f19044bd0828?crop=entropy&cs=srgb&fm=jpg&q=85",
+          "https://images.unsplash.com/photo-1667238324671-c2fe726f6084?crop=entropy&cs=srgb&fm=jpg&q=85",
+          "https://images.unsplash.com/photo-1762452059586-ed5a830fe4d3?crop=entropy&cs=srgb&fm=jpg&q=85"
+        ],
+        "avatars": [
+          "https://images.pexels.com/photos/30004323/pexels-photo-30004323.jpeg",
+          "https://images.pexels.com/photos/30004324/pexels-photo-30004324.jpeg"
+        ],
+        "placeholders": {
+          "property": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "user": "https://ui-avatars.com/api/?background=random"
+        }
+      }
+    },
+    "motion": {
+      "transitions": {
+        "default": "transition-all duration-200 ease-in-out",
+        "slow": "transition-all duration-500 ease-in-out"
+      },
+      "animations": {
+        "fade_in": "animate-in fade-in duration-500",
+        "slide_up": "animate-in slide-in-from-bottom-4 duration-500 fade-in"
+      }
+    },
+    "accessibility": {
+      "rules": [
+        "Ensure 4.5:1 contrast ratio for normal text.",
+        "Use semantic HTML (main, nav, aside, section).",
+        "All interactive elements must have focus states.",
+        "Images must have alt text."
+      ]
+    },
+    "instructions_to_main_agent": [
+      "Use 'Manrope' for all headings and 'Inter' for body text.",
+      "Implement the Sidebar layout with a collapsible state for mobile.",
+      "Use the 'Bento' grid system for the Dashboard overview page.",
+      "Ensure all cards have a subtle border and shadow as defined in 'containers.card'.",
+      "Use the defined status colors for all badges and alerts.",
+      "Prioritize the use of Shadcn UI components but override styles to match the 'Soft Utility' vibe.",
+      "Do not use gradients for backgrounds; stick to solid colors or subtle patterns.",
+      "Ensure all charts use the primary color palette with varying opacities or complementary accents.",
+      "Add 'data-testid' to all interactive elements."
+    ]
+  }
+}
