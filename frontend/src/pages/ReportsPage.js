@@ -58,30 +58,35 @@ export default function ReportsPage() {
   const exportReport = async (type, format) => {
     try {
       const token = localStorage.getItem('token');
-      const url = format === 'csv' 
-        ? reportsApi.exportCsv(type) 
-        : reportsApi.exportPdf(type);
+      const baseUrl = process.env.REACT_APP_BACKEND_URL;
+      const url = `${baseUrl}/api/reports/export/${format}/${type}`;
       
+      // Open in new window for download
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `${type}_report.${format}`);
+      
+      // Use fetch with auth for authenticated download
       const response = await fetch(url, {
+        method: 'GET',
         headers: {
-          'Authorization': `Bearer ${token}`
-        }
+          'Authorization': `Bearer ${token}`,
+        },
       });
       
       if (!response.ok) throw new Error('Export failed');
       
       const blob = await response.blob();
       const downloadUrl = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = downloadUrl;
-      a.download = `${type}_report.${format}`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
+      link.href = downloadUrl;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
       
       toast.success(`${capitalize(type)} report downloaded`);
     } catch (error) {
+      console.error('Export error:', error);
       toast.error('Failed to export report');
     }
   };
