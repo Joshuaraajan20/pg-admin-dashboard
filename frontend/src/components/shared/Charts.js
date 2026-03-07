@@ -57,8 +57,16 @@ export function ChartCard({
 export function RevenueChart({ data }) {
   const formatCurrency = (value) => `₹${(value / 1000).toFixed(0)}K`;
 
+  if (!data || data.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-full text-slate-400">
+        No revenue data available
+      </div>
+    );
+  }
+
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="100%" height="100%" minWidth={300} minHeight={200}>
       <LineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
         <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
         <XAxis
@@ -87,8 +95,16 @@ export function RevenueChart({ data }) {
 }
 
 export function OccupancyChart({ data }) {
+  if (!data || data.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-full text-slate-400">
+        No occupancy data available
+      </div>
+    );
+  }
+
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="100%" height="100%" minWidth={300} minHeight={200}>
       <BarChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
         <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
         <XAxis
