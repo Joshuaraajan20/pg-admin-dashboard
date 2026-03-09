@@ -7,28 +7,18 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    const storedUser = localStorage.getItem('user');
-    
-    if (token && storedUser) {
-      setUser(JSON.parse(storedUser));
-      // Verify token is still valid
-      authApi.me()
-        .then(res => {
-          setUser(res.data);
-          localStorage.setItem('user', JSON.stringify(res.data));
-        })
-        .catch(() => {
-          localStorage.removeItem('token');
-          localStorage.removeItem('user');
-          setUser(null);
-        })
-        .finally(() => setLoading(false));
-    } else {
-      setLoading(false);
-    }
-  }, []);
+ useEffect(() => {
+  supabase.auth.getSession().then(({ data }) => {
+    setUser(data?.session?.user ?? null);
+    setLoading(false);
+  });
+
+  const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+    setUser(session?.user ?? null);
+  });
+
+  return () => listener.subscription.unsubscribe();
+}, []);
 
   const login = useCallback(async (credentials) => {
   const { email, password } = credentials;
