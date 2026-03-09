@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { authApi } from '@/lib/api';
+import { supabase } from '@/lib/supabase';
 
 const AuthContext = createContext(null);
 
@@ -31,28 +31,36 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = useCallback(async (credentials) => {
-    const response = await authApi.login(credentials);
-    const { access_token, user: userData } = response.data;
-    localStorage.setItem('token', access_token);
-    localStorage.setItem('user', JSON.stringify(userData));
-    setUser(userData);
-    return userData;
-  }, []);
-
+  const { email, password } = credentials;
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+  if (error) throw error;
+  const userData = data.user;
+  localStorage.setItem('user', JSON.stringify(userData));
+  setUser(userData);
+  return userData;
+}, []);
+  
   const register = useCallback(async (data) => {
-    const response = await authApi.register(data);
-    const { access_token, user: userData } = response.data;
-    localStorage.setItem('token', access_token);
-    localStorage.setItem('user', JSON.stringify(userData));
-    setUser(userData);
-    return userData;
-  }, []);
+  const { email, password } = data;
+  const { data: result, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+  if (error) throw error;
+  const userData = result.user;
+  localStorage.setItem('user', JSON.stringify(userData));
+  setUser(userData);
+  return userData;
+}, []);
 
-  const logout = useCallback(() => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    setUser(null);
-  }, []);
+ const logout = useCallback(async () => {
+  await supabase.auth.signOut();
+  localStorage.removeItem('user');
+  setUser(null);
+}, []);
 
   const value = {
     user,
