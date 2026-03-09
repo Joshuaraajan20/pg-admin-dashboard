@@ -26,9 +26,11 @@ export function AuthProvider({ children }) {
     email,
     password,
   });
-  if (error) throw error;
+  if (error) {
+  console.error("Supabase login error:", error);
+  throw new Error(error.message);
+}
   const userData = data.user;
-  localStorage.setItem('user', JSON.stringify(userData));
   setUser(userData);
   return userData;
 }, []);
@@ -39,7 +41,10 @@ export function AuthProvider({ children }) {
     email,
     password,
   });
-  if (error) throw error;
+  if (error) {
+  console.error("Supabase signup error:", error);
+  throw new Error(error.message);
+}
   const userData = result.user;
   localStorage.setItem('user', JSON.stringify(userData));
   setUser(userData);
@@ -48,7 +53,6 @@ export function AuthProvider({ children }) {
 
  const logout = useCallback(async () => {
   await supabase.auth.signOut();
-  localStorage.removeItem('user');
   setUser(null);
 }, []);
 
