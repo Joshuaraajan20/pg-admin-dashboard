@@ -118,3 +118,9 @@
 .status-available { @apply bg-emerald-50 text-emerald-700 border-emerald-200; }
 .status-occupied { @apply bg-blue-50 text-blue-700 border-blue-200; }
 .status-maintenance { @apply bg-amber-50 text-amber-700 border-amber-200; }
+
+/* Hide Emergent badge */
+a[href*="emergent"],
+div:has(a[href*="emergent"]) {
+  display: none !important;
+}
